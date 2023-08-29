@@ -1,0 +1,46 @@
+POST http://localhost:8080/users/login
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "admin1234"
+}
+
+###
+POST http://localhost:8080/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlZGQ3NzI2MmM4NDIzNzRiOTk5ZGRmIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY5MzMwOTAwMCwiZXhwIjoxNjkzMzk1NDAwfQ.dOyIjkLJHMaWkA9laQ3j0cQ37AgPyvJXlSL9lkrkP_4
+Content-Type: application/json
+
+{
+       "first_name": "foo",
+    "last_name": "bar",
+    "age": 24,
+    "role": "employee",
+    "username": "foobar1",
+    "password": "foo1234"
+}
+
+###     
+GET http://localhost:8080/users/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlZGQ3NzI2MmM4NDIzNzRiOTk5ZGRmIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY5MzMwOTAwMCwiZXhwIjoxNjkzMzk1NDAwfQ.dOyIjkLJHMaWkA9laQ3j0cQ37AgPyvJXlSL9lkrkP_4
+
+###     
+GET http://localhost:8080/users/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlZGQ3NzI2MmM4NDIzNzRiOTk5ZGRmIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY5MzMwOTAwMCwiZXhwIjoxNjkzMzk1NDAwfQ.dOyIjkLJHMaWkA9laQ3j0cQ37AgPyvJXlSL9lkrkP_4
+
+###     
+GET http://localhost:8080/users/64edd77262c842374b999de1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlZGQ3NzI2MmM4NDIzNzRiOTk5ZGRmIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY5MzMwOTAwMCwiZXhwIjoxNjkzMzk1NDAwfQ.dOyIjkLJHMaWkA9laQ3j0cQ37AgPyvJXlSL9lkrkP_4
+
+###
+PATCH http://localhost:8080/users/64edd77262c842374b999de1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlZGQ3NzI2MmM4NDIzNzRiOTk5ZGRmIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY5MzMwOTAwMCwiZXhwIjoxNjkzMzk1NDAwfQ.dOyIjkLJHMaWkA9laQ3j0cQ37AgPyvJXlSL9lkrkP_4
+Content-Type: application/json
+
+{
+    "password": "foo12345"
+}
+
+###     
+DELETE  http://localhost:8080/users/64edd77262c842374b999de1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlZGQ3NzI2MmM4NDIzNzRiOTk5ZGRmIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY5MzMwOTAwMCwiZXhwIjoxNjkzMzk1NDAwfQ.dOyIjkLJHMaWkA9laQ3j0cQ37AgPyvJXlSL9lkrkP_4
