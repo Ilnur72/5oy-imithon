@@ -9,6 +9,7 @@ import {
   Query,
   UseGuards,
   Inject,
+  ForbiddenException,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 
@@ -60,9 +61,10 @@ export class UsersController {
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() data: UpdateUserDto) {
+    if (id == this.request['user'].id)
+      throw new ForbiddenException('Ruxsatga ega emassiz.');
     return this.usersService.update(id, data);
   }
-
 
   @Delete(':id')
   remove(@Param('id') id: string) {

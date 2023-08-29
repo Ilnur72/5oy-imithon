@@ -44,7 +44,6 @@ export class User {
     required: true,
   })
   password: string;
-
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

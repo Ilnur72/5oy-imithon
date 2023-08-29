@@ -37,7 +37,7 @@ export class UsersService {
 
   async findAll({
     q,
-    sort = { by: 'id', order: SortOrder.DESC },
+    sort = { by: '_id', order: SortOrder.DESC },
     page = { offset: 1, limit: 10 },
     filters = {},
   }: FindUsersDto) {
@@ -54,7 +54,7 @@ export class UsersService {
 
     const dbQuery = this.userModel
       .find(filters)
-      .sort({ [sort.by]: sort.order })
+      .sort({ [sort.by == 'id' ? '_' + sort.by : sort.by]: sort.order })
       .skip((page.offset - 1) * page.limit)
       .limit(page.limit);
 
@@ -83,7 +83,7 @@ export class UsersService {
     const existing = await this.userModel.findById(id);
     const hashedPassword: any = {};
 
-    if ((this.request['user'].role == 'employee' && data.password) || data.role)
+    if (id == this.request['user'].id && (data.password || data.role))
       throw new ForbiddenException('Ruxsatga ega emassiz.');
 
     if (!existing) throw new NotFoundException('Foydalanuvchi topilmadi.');

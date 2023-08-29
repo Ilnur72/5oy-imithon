@@ -1,0 +1,40 @@
+POST http://localhost:8080/guides/login
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "admin1234"
+}
+
+###
+POST http://localhost:8080/guides
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlZTIwNWI5OWQyNWNkZTgzMTk0OWIxIiwicm9sZSI6ImVtcGxveWVlIn0sImlhdCI6MTY5MzMyNzc1NywiZXhwIjoxNjkzNDE0MTU3fQ.RtGvBRcORiAaQ-XXjnqGjSCZqpGY-Ht3ND8o02GAW_o
+Content-Type: application/json
+
+{
+    "title": "foobaz",
+    "content": "bar"
+}
+
+
+###     
+GET http://localhost:8080/guides?sort[by]=id&sort[order]=desc&
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlZTIwNWI5OWQyNWNkZTgzMTk0OWIxIiwicm9sZSI6ImVtcGxveWVlIn0sImlhdCI6MTY5MzMyNzc1NywiZXhwIjoxNjkzNDE0MTU3fQ.RtGvBRcORiAaQ-XXjnqGjSCZqpGY-Ht3ND8o02GAW_o
+
+###     
+GET http://localhost:8080/guides/64ee1484fbbf7cb856e4d345
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlZGQ3NzI2MmM4NDIzNzRiOTk5ZGRmIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY5MzMyMDc5MSwiZXhwIjoxNjkzNDA3MTkxfQ.0gvV9gDataB9GNGT15z_9th9kJvWW0M-gqgqiT4d7wE
+
+###
+PATCH http://localhost:8080/guides/64ee1484fbbf7cb856e4d345
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlZGQ3NzI2MmM4NDIzNzRiOTk5ZGRmIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY5MzMyMDc5MSwiZXhwIjoxNjkzNDA3MTkxfQ.0gvV9gDataB9GNGT15z_9th9kJvWW0M-gqgqiT4d7wE
+Content-Type: application/json
+
+{
+    "title": "foobaz updated"
+}
+
+
+###     
+DELETE  http://localhost:8080/guides/64ee1484fbbf7cb856e4d345
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlZGQ3NzI2MmM4NDIzNzRiOTk5ZGRmIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY5MzMyMDc5MSwiZXhwIjoxNjkzNDA3MTkxfQ.0gvV9gDataB9GNGT15z_9th9kJvWW0M-gqgqiT4d7wE
