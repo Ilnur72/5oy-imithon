@@ -22,7 +22,7 @@ import { IsLoggedIn } from 'src/shared/guards/is-loggedin.guard';
 import { UserRole } from 'src/shared/types/enums';
 import { REQUEST } from '@nestjs/core';
 
-@SetRoles(UserRole.ADMIN, UserRole.EMPLOYEE)
+@SetRoles(UserRole.ADMIN)
 @UseGuards(IsLoggedIn, HasRole)
 @Controller('users')
 export class UsersController {
@@ -41,6 +41,7 @@ export class UsersController {
     return this.usersService.findAll(findUsersDto);
   }
 
+  @SetRoles(UserRole.ADMIN, UserRole.EMPLOYEE)
   @Get('me')
   findMe() {
     return this.usersService.findOne(this.request['user'].id);
@@ -51,10 +52,17 @@ export class UsersController {
     return this.usersService.findOne(id);
   }
 
+  @SetRoles(UserRole.ADMIN, UserRole.EMPLOYEE)
+  @Patch('me')
+  updateMe(@Body() data: UpdateUserDto) {
+    return this.usersService.update(this.request['user'].id, data);
+  }
+
   @Patch(':id')
   update(@Param('id') id: string, @Body() data: UpdateUserDto) {
     return this.usersService.update(id, data);
   }
+
 
   @Delete(':id')
   remove(@Param('id') id: string) {

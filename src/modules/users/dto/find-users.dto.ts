@@ -1,17 +1,16 @@
-import { OffsetPaginationDto } from 'src/shared/dto/offset-pagination.dto';
-import { SortOrder, UserRole } from 'src/shared/types/enums';
 import { Type } from 'class-transformer';
 import {
-  IsBoolean,
   IsEnum,
   IsOptional,
   IsString,
   ValidateNested,
 } from 'class-validator';
+import { OffsetPaginationDto } from 'src/shared/dto/offset-pagination.dto';
+import { SortOrder, UserRole } from 'src/shared/types/enums';
 
 export class SortUsersDto {
   @IsOptional()
-  @IsEnum(['created_at', 'updated_at', 'first_name'])
+  @IsEnum(['age', 'id'])
   by?: string;
 
   @IsOptional()

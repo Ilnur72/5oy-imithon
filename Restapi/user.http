@@ -8,24 +8,24 @@ Content-Type: application/json
 
 ###
 POST http://localhost:8080/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlZGQ3NzI2MmM4NDIzNzRiOTk5ZGRmIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY5MzMwOTAwMCwiZXhwIjoxNjkzMzk1NDAwfQ.dOyIjkLJHMaWkA9laQ3j0cQ37AgPyvJXlSL9lkrkP_4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlZGQ3NzI2MmM4NDIzNzRiOTk5ZGRmIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY5MzMxMDE5NiwiZXhwIjoxNjkzMzk2NTk2fQ.g7UM6KfJCVPdMBqs0Tt7LZRrPQ94Y_WyPcAcMFld6a8
 Content-Type: application/json
 
 {
-       "first_name": "foo",
+    "first_name": "foo",
     "last_name": "bar",
     "age": 24,
     "role": "employee",
-    "username": "foobar1",
+    "username": "foobar4",
     "password": "foo1234"
 }
 
 ###     
 GET http://localhost:8080/users/me
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlZGQ3NzI2MmM4NDIzNzRiOTk5ZGRmIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY5MzMwOTAwMCwiZXhwIjoxNjkzMzk1NDAwfQ.dOyIjkLJHMaWkA9laQ3j0cQ37AgPyvJXlSL9lkrkP_4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlZGQ3NzI2MmM4NDIzNzRiOTk5ZGUwIiwicm9sZSI6ImVtcGxveWVlIn0sImlhdCI6MTY5MzMwOTMwOCwiZXhwIjoxNjkzMzk1NzA4fQ.gVoPVOQ1xOZI4un_-BxR4wqqsQh4eIvtGTBkPRTHVko
 
 ###     
-GET http://localhost:8080/users/
+GET http://localhost:8080/users/?sort[by]=id&sort[order]=desc
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlZGQ3NzI2MmM4NDIzNzRiOTk5ZGRmIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY5MzMwOTAwMCwiZXhwIjoxNjkzMzk1NDAwfQ.dOyIjkLJHMaWkA9laQ3j0cQ37AgPyvJXlSL9lkrkP_4
 
 ###     
@@ -39,6 +39,15 @@ Content-Type: application/json
 
 {
     "password": "foo12345"
+}
+
+###
+PATCH http://localhost:8080/users/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlZGQ3NzI2MmM4NDIzNzRiOTk5ZGUwIiwicm9sZSI6ImVtcGxveWVlIn0sImlhdCI6MTY5MzMwOTMwOCwiZXhwIjoxNjkzMzk1NzA4fQ.gVoPVOQ1xOZI4un_-BxR4wqqsQh4eIvtGTBkPRTHVko
+Content-Type: application/json  
+
+{
+   "last_name": "Doe"
 }
 
 ###     

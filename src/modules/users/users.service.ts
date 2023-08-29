@@ -1,5 +1,7 @@
 import {
   BadGatewayException,
+  ForbiddenException,
+  Inject,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
@@ -11,10 +13,14 @@ import { Model } from 'mongoose';
 import { hash } from 'bcryptjs';
 import { FindUsersDto } from './dto/find-users.dto';
 import { SortOrder } from 'src/shared/types/enums';
+import { REQUEST } from '@nestjs/core';
 
 @Injectable()
 export class UsersService {
-  constructor(@InjectModel(User.name) private userModel: Model<User>) {}
+  constructor(
+    @InjectModel(User.name) private userModel: Model<User>,
+    @Inject(REQUEST) private readonly request: Request,
+  ) {}
 
   async create(data: CreateUserDto) {
     const existing = await this.userModel.findOne({ username: data.username });
@@ -31,13 +37,10 @@ export class UsersService {
 
   async findAll({
     q,
-    sort = { by: 'updated_at', order: SortOrder.DESC },
+    sort = { by: 'id', order: SortOrder.DESC },
     page = { offset: 1, limit: 10 },
     filters = {},
   }: FindUsersDto) {
-    // const { ...directFilters } = filters;
-    // const filter = { ...directFilters };
-
     if (q) {
       filters['$or'] = [
         {
@@ -56,7 +59,7 @@ export class UsersService {
       .limit(page.limit);
 
     const result = await dbQuery;
-    const total = await this.userModel.countDocuments({}).exec();
+    const total = await this.userModel.find(filters).countDocuments({}).exec();
 
     return {
       data: result,
@@ -80,8 +83,12 @@ export class UsersService {
     const existing = await this.userModel.findById(id);
     const hashedPassword: any = {};
 
+    if ((this.request['user'].role == 'employee' && data.password) || data.role)
+      throw new ForbiddenException('Ruxsatga ega emassiz.');
+
     if (!existing) throw new NotFoundException('Foydalanuvchi topilmadi.');
     if (data.password) hashedPassword.password = await hash(data.password, 10);
+
     const result = await this.userModel.findByIdAndUpdate(
       id,
       { ...data, ...hashedPassword },
