@@ -2,22 +2,22 @@ POST http://localhost:8080/users/login
 Content-Type: application/json
 
 {
-    "username": "foobar14",
-    "password": "foo1234"
+    "username": "admin",
+    "password": "admin1234"
 }
 
 ###
 POST http://localhost:8080/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlZTE0MjU1YjMwYzU0MTljODkxMzNjIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY5MzMyNjY2NSwiZXhwIjoxNjkzNDEzMDY1fQ.kDCP_zbIOfm3wf2hsnh6om5LEEPZclylJmV3Dp32ptM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlZWZiY2FhNDk0OGJlMjZiMDdjNDNjIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY5MzUxMTI3OCwiZXhwIjoxNjkzNTk3Njc4fQ.fOMs4HAKihDNRQpmDly3h8ShCfNz579ARaFlXLuyTNM
 Content-Type: application/json
 
 {
-    "first_name": "foo",
-    "last_name": "bar",
-    "age": 24,
+    "first_name": "john",
+    "last_name": "baz",
+    "age": 17,
     "role": "employee",
-    "username": "foobar14",
-    "password": "foo1234"
+    "username": "fooba10",
+    "password": "12345678"
 }
 
 ###     

@@ -3,7 +3,7 @@ import { UserGuidesService } from './user-guides.service';
 import { CreateUserGuideDto } from './dto/create-user-guide.dto';
 import { UpdateUserGuideDto } from './dto/update-user-guide.dto';
 
-@Controller('user-guides')
+@Controller('userguides')
 export class UserGuidesController {
   constructor(private readonly userGuidesService: UserGuidesService) {}
 

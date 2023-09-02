@@ -5,27 +5,30 @@ export type UserGuideDocument = HydratedDocument<UserGuide>;
 
 @Schema({
   versionKey: false,
+  // toJSON: {
+  //   virtuals: true,
+  // },
 })
 export class UserGuide {
   @Prop({
     type: mongoose.SchemaTypes.ObjectId,
+    ref: 'Guide',
     required: true,
-    ref: 'guides',
   })
   guide_id: string;
 
   @Prop({
     type: mongoose.SchemaTypes.ObjectId,
+    ref: 'User',
     required: true,
-    ref: 'userGuides',
   })
-  userGuide_id: string;
+  user_id: string;
 
   @Prop({
     type: Boolean,
     default: false,
   })
-  completed: boolean;
+  completed?: boolean;
 }
 
 export const UserGuideSchema = SchemaFactory.createForClass(UserGuide);
@@ -38,3 +41,18 @@ UserGuideSchema.set('toJSON', {
     return ret;
   },
 });
+
+// UserGuideSchema.virtual('user', {
+//   ref: 'User',
+//   localField: 'user_id',
+//   foreignField: '_id',
+//   justOne: true,
+// });
+// UserGuideSchema.virtual('guide', {
+//   ref: 'Guide',
+//   localField: 'guide_id',
+//   foreignField: '_id',
+//   justOne: true,
+// });
+
+// export { UserGuideSchema };

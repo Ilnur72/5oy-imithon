@@ -10,8 +10,6 @@ const nestSchema = new Schema(
     role: String,
     username: String,
     password: String,
-    created_at: { type: Date, default: Date.now },
-    updated_at: { type: Date, default: Date.now },
   },
   { versionKey: false },
 );

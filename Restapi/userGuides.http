@@ -1,0 +1,44 @@
+POST http://localhost:8080/users/login
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "admin1234"
+}
+
+###
+POST http://localhost:8080/userguides
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlZTE0MjU1YjMwYzU0MTljODkxMzNjIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY5MzM2OTYwNiwiZXhwIjoxNjkzNDU2MDA2fQ.dux10sf2sllCUN7Fx8ztNOpPBEnM4efzTcC76kqU0R8
+Content-Type: application/json
+
+{
+    "user_id": "64ee14255b30c5419c89133c",
+    "guide_id": "64ee14255b30c5419c891341"
+}
+
+
+###         
+GET http://localhost:8080/userguides
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlZTE0MjU1YjMwYzU0MTljODkxMzNjIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY5MzM2OTYwNiwiZXhwIjoxNjkzNDU2MDA2fQ.dux10sf2sllCUN7Fx8ztNOpPBEnM4efzTcC76kqU0R8
+
+###     
+GET http://localhost:8080/userguides?sort[by]=id&sort[order]=desc&
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlZTE0MjU1YjMwYzU0MTljODkxMzNjIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY5MzM2OTYwNiwiZXhwIjoxNjkzNDU2MDA2fQ.dux10sf2sllCUN7Fx8ztNOpPBEnM4efzTcC76kqU0R8
+
+###     
+GET http://localhost:8080/userguides/64eede34b5b0ac0e058a0f8f
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlZTE0MjU1YjMwYzU0MTljODkxMzNjIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY5MzM2OTYwNiwiZXhwIjoxNjkzNDU2MDA2fQ.dux10sf2sllCUN7Fx8ztNOpPBEnM4efzTcC76kqU0R8
+
+###
+PATCH http://localhost:8080/userguides/64ee1484fbbf7cb856e4d345
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlZTE0MjU1YjMwYzU0MTljODkxMzNjIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY5MzM2OTYwNiwiZXhwIjoxNjkzNDU2MDA2fQ.dux10sf2sllCUN7Fx8ztNOpPBEnM4efzTcC76kqU0R8
+Content-Type: application/json
+
+{
+    "title": "foobaz updated"
+}
+
+
+###     
+DELETE  http://localhost:8080/userguides/64eedddd11e5315ad88b7a72
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlZTE0MjU1YjMwYzU0MTljODkxMzNjIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY5MzM2OTYwNiwiZXhwIjoxNjkzNDU2MDA2fQ.dux10sf2sllCUN7Fx8ztNOpPBEnM4efzTcC76kqU0R8

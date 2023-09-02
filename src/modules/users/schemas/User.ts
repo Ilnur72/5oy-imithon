@@ -11,18 +11,22 @@ export class User {
   @Prop({
     type: String,
     required: true,
+    // maxlength: 25,
   })
   first_name: string;
 
   @Prop({
     type: String,
     required: true,
+    // maxlength: 25,
   })
   last_name: string;
 
   @Prop({
     type: Number,
     required: true,
+    // min: 16,
+    // max: 60,
   })
   age: number;
 
@@ -36,12 +40,14 @@ export class User {
   @Prop({
     type: String,
     required: true,
+    // maxlength: 25,
   })
   username: string;
 
   @Prop({
     type: String,
     required: true,
+    // maxlength: 350,
   })
   password: string;
 }
