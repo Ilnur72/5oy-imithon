@@ -5,15 +5,15 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
-import { InjectModel } from '@nestjs/mongoose';
-import { User } from './schemas/User';
-import { Model } from 'mongoose';
-import { hash } from 'bcryptjs';
-import { FindUsersDto } from './dto/find-users.dto';
-import { SortOrder } from 'src/shared/types/enums';
 import { REQUEST } from '@nestjs/core';
+import { InjectModel } from '@nestjs/mongoose';
+import { hash } from 'bcryptjs';
+import { Model } from 'mongoose';
+import { SortOrder } from 'src/shared/types/enums';
+import { CreateUserDto } from './dto/create-user.dto';
+import { FindUsersDto } from './dto/find-users.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
+import { User } from './schemas/User';
 
 @Injectable()
 export class UsersService {

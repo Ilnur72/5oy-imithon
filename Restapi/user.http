@@ -43,11 +43,11 @@ Content-Type: application/json
 
 ###
 PATCH http://localhost:8080/users/me
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlZGQ3NzI2MmM4NDIzNzRiOTk5ZGUwIiwicm9sZSI6ImVtcGxveWVlIn0sImlhdCI6MTY5MzMwOTMwOCwiZXhwIjoxNjkzMzk1NzA4fQ.gVoPVOQ1xOZI4un_-BxR4wqqsQh4eIvtGTBkPRTHVko
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlZWZiY2FhNDk0OGJlMjZiMDdjNDNjIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY5Mzc1NjAyNiwiZXhwIjoxNjkzODQyNDI2fQ.K_c7pf1zm9JDiE2G_ERdYsCfZf9MpqINe0HqUJ8zpgg
 Content-Type: application/json  
 
 {
-   "password": "Doe"
+   "first_name": "admin"
 }
 
 ###     

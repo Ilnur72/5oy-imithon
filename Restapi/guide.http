@@ -1,4 +1,4 @@
-POST http://localhost:8080/guides/login
+POST http://localhost:8080/users/login
 Content-Type: application/json
 
 {
@@ -8,7 +8,7 @@ Content-Type: application/json
 
 ###
 POST http://localhost:8080/guides
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlZTIwNWI5OWQyNWNkZTgzMTk0OWIxIiwicm9sZSI6ImVtcGxveWVlIn0sImlhdCI6MTY5MzMyNzc1NywiZXhwIjoxNjkzNDE0MTU3fQ.RtGvBRcORiAaQ-XXjnqGjSCZqpGY-Ht3ND8o02GAW_o
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlZWZiY2FhNDk0OGJlMjZiMDdjNDNjIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY5MzczODcxOCwiZXhwIjoxNjkzODI1MTE4fQ.6jOJGi38gisp-eBItZQUS9N64SbkiZbHxFjnvj_1HbU
 Content-Type: application/json
 
 {
@@ -18,23 +18,24 @@ Content-Type: application/json
 
 
 ###     
-GET http://localhost:8080/guides?sort[by]=id&sort[order]=desc&
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlZTIwNWI5OWQyNWNkZTgzMTk0OWIxIiwicm9sZSI6ImVtcGxveWVlIn0sImlhdCI6MTY5MzMyNzc1NywiZXhwIjoxNjkzNDE0MTU3fQ.RtGvBRcORiAaQ-XXjnqGjSCZqpGY-Ht3ND8o02GAW_o
+GET http://localhost:8080/guides
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlZWZiY2FhNDk0OGJlMjZiMDdjNDNjIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY5MzczODcxOCwiZXhwIjoxNjkzODI1MTE4fQ.6jOJGi38gisp-eBItZQUS9N64SbkiZbHxFjnvj_1HbU
 
 ###     
-GET http://localhost:8080/guides/64ee1484fbbf7cb856e4d345
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlZGQ3NzI2MmM4NDIzNzRiOTk5ZGRmIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY5MzMyMDc5MSwiZXhwIjoxNjkzNDA3MTkxfQ.0gvV9gDataB9GNGT15z_9th9kJvWW0M-gqgqiT4d7wE
+GET http://localhost:8080/guides/64eefbcaa4948be26b07c442
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlZWZiY2FhNDk0OGJlMjZiMDdjNDNjIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY5MzczODcxOCwiZXhwIjoxNjkzODI1MTE4fQ.6jOJGi38gisp-eBItZQUS9N64SbkiZbHxFjnvj_1HbU
 
 ###
-PATCH http://localhost:8080/guides/64ee1484fbbf7cb856e4d345
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlZGQ3NzI2MmM4NDIzNzRiOTk5ZGRmIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY5MzMyMDc5MSwiZXhwIjoxNjkzNDA3MTkxfQ.0gvV9gDataB9GNGT15z_9th9kJvWW0M-gqgqiT4d7wE
+PATCH http://localhost:8080/guides/64eefbcaa4948be26b07c441
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlZWZiY2FhNDk0OGJlMjZiMDdjNDNjIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY5MzczODcxOCwiZXhwIjoxNjkzODI1MTE4fQ.6jOJGi38gisp-eBItZQUS9N64SbkiZbHxFjnvj_1HbU
 Content-Type: application/json
 
 {
-    "title": "foobaz updated"
+    "title": "Oylik maoshni sir saqlash bo'yicha tartib",
+    "notify": true
 }
 
 
 ###     
 DELETE  http://localhost:8080/guides/64ee1484fbbf7cb856e4d345
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlZGQ3NzI2MmM4NDIzNzRiOTk5ZGRmIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY5MzMyMDc5MSwiZXhwIjoxNjkzNDA3MTkxfQ.0gvV9gDataB9GNGT15z_9th9kJvWW0M-gqgqiT4d7wE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlZWZiY2FhNDk0OGJlMjZiMDdjNDNjIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY5MzczODcxOCwiZXhwIjoxNjkzODI1MTE4fQ.6jOJGi38gisp-eBItZQUS9N64SbkiZbHxFjnvj_1HbU

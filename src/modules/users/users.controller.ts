@@ -15,13 +15,13 @@ import { UsersService } from './users.service';
 
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { FindUsersDto } from './dto/find-users.dto';
 
 import { SetRoles } from '../auth/set-roles.decorator';
 import { HasRole } from 'src/shared/guards/has-roles.guard';
 import { IsLoggedIn } from 'src/shared/guards/is-loggedin.guard';
 import { UserRole } from 'src/shared/types/enums';
 import { REQUEST } from '@nestjs/core';
+import { FindUsersDto } from './dto/find-users.dto';
 
 @SetRoles(UserRole.ADMIN)
 @UseGuards(IsLoggedIn, HasRole)

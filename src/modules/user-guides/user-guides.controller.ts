@@ -1,9 +1,27 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  Query,
+  UseGuards,
+} from '@nestjs/common';
 import { UserGuidesService } from './user-guides.service';
 import { CreateUserGuideDto } from './dto/create-user-guide.dto';
 import { UpdateUserGuideDto } from './dto/update-user-guide.dto';
+import { FindUserGuideDto } from './dto/find-userGuide.dto';
+import { CreateBulk } from './dto/create-bulk.dto';
+import { SetRoles } from '../auth/set-roles.decorator';
+import { IsLoggedIn } from 'src/shared/guards/is-loggedin.guard';
+import { HasRole } from 'src/shared/guards/has-roles.guard';
+import { UserRole } from 'src/shared/types/enums';
 
-@Controller('userguides')
+@SetRoles(UserRole.ADMIN)
+@UseGuards(IsLoggedIn, HasRole)
+@Controller('user-guides')
 export class UserGuidesController {
   constructor(private readonly userGuidesService: UserGuidesService) {}
 
@@ -12,9 +30,19 @@ export class UserGuidesController {
     return this.userGuidesService.create(data);
   }
 
+  @Post(':id/read')
+  createRead(@Param('id') id: string) {
+    return this.userGuidesService.createRead(id);
+  }
+
+  @Post('bulk')
+  createBulk(@Body() data: CreateBulk) {
+    return this.userGuidesService.createBulk(data);
+  }
+
   @Get()
-  findAll() {
-    return this.userGuidesService.findAll();
+  findAll(@Query() findUserGuideDtop: FindUserGuideDto) {
+    return this.userGuidesService.findAll(findUserGuideDtop);
   }
 
   @Get(':id')

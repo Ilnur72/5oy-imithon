@@ -4,13 +4,18 @@ import { UpdateGuideDto } from './dto/update-guide.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Guide } from './schemas/Guide';
 import { Model } from 'mongoose';
-import { FindUsersDto } from '../users/dto/find-users.dto';
 import { SortOrder } from 'src/shared/types/enums';
 import { FindGuidesDto } from './dto/find-guide.dto';
+import { UserGuide } from '../user-guides/schemas/UserGuide';
+import { User } from '../users/schemas/User';
 
 @Injectable()
 export class GuidesService {
-  constructor(@InjectModel(Guide.name) private guideModel: Model<Guide>) {}
+  constructor(
+    @InjectModel(Guide.name) private guideModel: Model<Guide>,
+    @InjectModel(User.name) private userModel: Model<User>,
+    @InjectModel(UserGuide.name) private userGuideModel: Model<UserGuide>,
+  ) {}
 
   async create(data: CreateGuideDto) {
     const result = await this.guideModel.create(data);
@@ -30,7 +35,7 @@ export class GuidesService {
 
     const dbQuery = this.guideModel
       .find(search)
-      .sort({ ['_'+sort.by]: sort.order })
+      .sort({ ['_' + sort.by]: sort.order })
       .skip((page.offset - 1) * page.limit)
       .limit(page.limit);
 
@@ -49,17 +54,24 @@ export class GuidesService {
 
   async findOne(id: string) {
     const existing = await this.guideModel.findById(id);
-
+    const userGuideTotal = await this.userGuideModel
+      .find({ guide_id: existing.id })
+      .countDocuments({})
+      .exec();
     if (!existing) throw new NotFoundException('Guide topilmadi.');
 
-    return { data: existing };
+    return { data: { ...existing.toObject(), revisions: userGuideTotal } };
   }
 
   async update(id: string, data: UpdateGuideDto) {
     const existing = await this.guideModel.findById(id);
+    const newUserGuide = await this.userGuideModel.findOne({ guide_id: id });
 
     if (!existing) throw new NotFoundException('Guide topilmadi.');
-
+    if (data.notify) {
+      newUserGuide.completed = false;
+      newUserGuide.save();
+    }
     const result = await this.guideModel.findByIdAndUpdate(id, data, {
       new: true,
     });
