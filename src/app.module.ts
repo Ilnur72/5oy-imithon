@@ -8,7 +8,13 @@ import { GuidesModule } from './modules/guides/guides.module';
 import { UserGuidesModule } from './modules/user-guides/user-guides.module';
 
 @Module({
-  imports: [CoreModule, UsersModule, AuthModule, GuidesModule, UserGuidesModule],
+  imports: [
+    CoreModule,
+    UsersModule,
+    AuthModule,
+    GuidesModule,
+    UserGuidesModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

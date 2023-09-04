@@ -60,8 +60,8 @@ export class UserGuidesService {
       .find({ user_id: this.request['user'].id, ...filters })
       .skip((page.offset - 1) * page.limit)
       .limit(page.limit)
-      .populate([{ path: 'guide_id', select: '-notify' }])
-      // .select('-user_id');
+      .populate([{ path: 'guide_id', select: '-notify' }]);
+    // .select('-user_id');
 
     const result = await dbQuery;
     const total = await this.userGuideModel

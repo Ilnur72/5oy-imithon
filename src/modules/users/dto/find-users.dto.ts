@@ -1,10 +1,5 @@
 import { Type } from 'class-transformer';
-import {
-  IsEnum,
-  IsOptional,
-  IsString,
-  ValidateNested,
-} from 'class-validator';
+import { IsEnum, IsOptional, IsString, ValidateNested } from 'class-validator';
 import { OffsetPaginationDto } from 'src/shared/dto/offset-pagination.dto';
 import { SortOrder, UserRole } from 'src/shared/types/enums';
 

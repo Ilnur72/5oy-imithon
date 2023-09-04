@@ -1,13 +1,13 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { CreateGuideDto } from './dto/create-guide.dto';
-import { UpdateGuideDto } from './dto/update-guide.dto';
 import { InjectModel } from '@nestjs/mongoose';
-import { Guide } from './schemas/Guide';
 import { Model } from 'mongoose';
 import { SortOrder } from 'src/shared/types/enums';
-import { FindGuidesDto } from './dto/find-guide.dto';
 import { UserGuide } from '../user-guides/schemas/UserGuide';
 import { User } from '../users/schemas/User';
+import { CreateGuideDto } from './dto/create-guide.dto';
+import { FindGuidesDto } from './dto/find-guide.dto';
+import { UpdateGuideDto } from './dto/update-guide.dto';
+import { Guide } from './schemas/Guide';
 
 @Injectable()
 export class GuidesService {

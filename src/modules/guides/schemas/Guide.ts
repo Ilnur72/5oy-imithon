@@ -26,7 +26,7 @@ export class Guide {
   notify: boolean;
 }
 
-export const GuideSchema = SchemaFactory.createForClass(Guide);
+const GuideSchema = SchemaFactory.createForClass(Guide);
 
 GuideSchema.set('toJSON', {
   transform: function (_, ret) {
@@ -36,3 +36,4 @@ GuideSchema.set('toJSON', {
     return ret;
   },
 });
+export { GuideSchema };

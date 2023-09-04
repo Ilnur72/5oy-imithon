@@ -6,7 +6,7 @@ import {
   Max,
   MaxLength,
   Min,
-  MinLength
+  MinLength,
 } from 'class-validator';
 
 export class CreateUserDto {

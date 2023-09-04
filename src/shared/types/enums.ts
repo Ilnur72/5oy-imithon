@@ -1,7 +1,6 @@
 export enum UserRole {
   ADMIN = 'admin',
   EMPLOYEE = 'employee',
-
 }
 
 export enum SortOrder {
