@@ -44,7 +44,7 @@ export class UserGuidesService {
   }
 
   async createBulk(data: CreateBulk) {
-    data.user_id.map(
+    data.user_id.forEach(
       async (userGuide) =>
         await this.userGuideModel.create({
           guide_id: data.guide_id,
@@ -60,8 +60,10 @@ export class UserGuidesService {
       .find({ user_id: this.request['user'].id, ...filters })
       .skip((page.offset - 1) * page.limit)
       .limit(page.limit)
-      .populate([{ path: 'guide_id', select: '-notify' }]);
-    // .select('-user_id');
+      .populate({ path: 'guide', select: 'id title content' })
+      .lean({ virtuals: true })
+      .select('-user_id')
+      .exec();
 
     const result = await dbQuery;
     const total = await this.userGuideModel
@@ -80,7 +82,7 @@ export class UserGuidesService {
   }
 
   async findOne(id: string) {
-    const existing = await this.userGuideModel.findById(id);
+    const existing = (await this.userGuideModel.findById(id)).populate('guide');
     // .populate({ path: 'user' })
     // .populate({ path: 'guide' });
 

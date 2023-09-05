@@ -26,7 +26,7 @@ export class GuidesService {
   async findAll({
     q,
     sort = { by: '_id', order: SortOrder.DESC },
-    page = { offset: 1, limit: 10 },
+    page,
   }: FindGuidesDto) {
     const search: any = {};
     if (q) {
