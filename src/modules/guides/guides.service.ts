@@ -19,7 +19,16 @@ export class GuidesService {
 
   async create(data: CreateGuideDto) {
     const result = await this.guideModel.create(data);
-
+    const usersList = await this.userModel.find();
+    if (data.notify) {
+      const guidePromises = usersList.map(async (user) => {
+        await this.userGuideModel.create({
+          user_id: user.id,
+          guide_id: result.id,
+        });
+      });
+      await Promise.all(guidePromises);
+    }
     return { data: result };
   }
 

@@ -10,6 +10,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { hash } from 'bcryptjs';
 import { Model } from 'mongoose';
 import { SortOrder } from 'src/shared/types/enums';
+import { UserGuide } from '../user-guides/schemas/UserGuide';
 import { CreateUserDto } from './dto/create-user.dto';
 import { FindUsersDto } from './dto/find-users.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -19,6 +20,7 @@ import { User } from './schemas/User';
 export class UsersService {
   constructor(
     @InjectModel(User.name) private userModel: Model<User>,
+    @InjectModel(UserGuide.name) private userGuideModel: Model<UserGuide>,
     @Inject(REQUEST) private readonly request: Request,
   ) {}
 
@@ -75,8 +77,25 @@ export class UsersService {
     const existing = await this.userModel.findById(id);
 
     if (!existing) throw new NotFoundException('Foydalanuvchi topilmadi.');
+    const totalGuides = await this.userGuideModel
+      .find({ user_id: id })
+      .countDocuments({});
 
-    return { data: existing };
+    const todoGuides = await this.userGuideModel
+      .find({ user_id: id, completed: false })
+      .countDocuments({});
+    const readGuides = await this.userGuideModel
+      .find({ user_id: id, completed: true })
+      .countDocuments({});
+
+    return {
+      data: {
+        ...existing.toObject(),
+        total_guides: totalGuides,
+        todo_guides: todoGuides,
+        read_guides: readGuides,
+      },
+    };
   }
 
   async update(id: string, data: UpdateUserDto) {
