@@ -1,26 +1,26 @@
 import {
-  Controller,
-  Get,
-  Post,
   Body,
-  Patch,
-  Param,
+  Controller,
   Delete,
+  ForbiddenException,
+  Get,
+  Inject,
+  Param,
+  Patch,
+  Post,
   Query,
   UseGuards,
-  Inject,
-  ForbiddenException,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 
-import { SetRoles } from '../auth/set-roles.decorator';
+import { REQUEST } from '@nestjs/core';
 import { HasRole } from 'src/shared/guards/has-roles.guard';
 import { IsLoggedIn } from 'src/shared/guards/is-loggedin.guard';
 import { UserRole } from 'src/shared/types/enums';
-import { REQUEST } from '@nestjs/core';
+import { SetRoles } from '../auth/set-roles.decorator';
 import { FindUsersDto } from './dto/find-users.dto';
 
 @SetRoles(UserRole.ADMIN)

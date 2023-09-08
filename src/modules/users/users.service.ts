@@ -80,7 +80,6 @@ export class UsersService {
     const totalGuides = await this.userGuideModel
       .find({ user_id: id })
       .countDocuments({});
-
     const todoGuides = await this.userGuideModel
       .find({ user_id: id, completed: false })
       .countDocuments({});

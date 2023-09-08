@@ -1,22 +1,22 @@
 import {
-  Controller,
-  Get,
-  Post,
   Body,
-  Patch,
-  Param,
+  Controller,
   Delete,
-  UseGuards,
+  Get,
+  Param,
+  Patch,
+  Post,
   Query,
+  UseGuards,
 } from '@nestjs/common';
-import { GuidesService } from './guides.service';
+import { HasRole } from 'src/shared/guards/has-roles.guard';
+import { IsLoggedIn } from 'src/shared/guards/is-loggedin.guard';
+import { UserRole } from 'src/shared/types/enums';
+import { SetRoles } from '../auth/set-roles.decorator';
+import { FindUsersDto } from '../users/dto/find-users.dto';
 import { CreateGuideDto } from './dto/create-guide.dto';
 import { UpdateGuideDto } from './dto/update-guide.dto';
-import { SetRoles } from '../auth/set-roles.decorator';
-import { UserRole } from 'src/shared/types/enums';
-import { IsLoggedIn } from 'src/shared/guards/is-loggedin.guard';
-import { HasRole } from 'src/shared/guards/has-roles.guard';
-import { FindUsersDto } from '../users/dto/find-users.dto';
+import { GuidesService } from './guides.service';
 
 @SetRoles(UserRole.ADMIN)
 @UseGuards(IsLoggedIn, HasRole)

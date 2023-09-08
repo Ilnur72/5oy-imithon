@@ -74,12 +74,14 @@ export class GuidesService {
 
   async update(id: string, data: UpdateGuideDto) {
     const existing = await this.guideModel.findById(id);
-    const newUserGuide = await this.userGuideModel.findOne({ guide_id: id });
+    const newUserGuide = await this.userGuideModel.find({ guide_id: id });
 
     if (!existing) throw new NotFoundException('Guide topilmadi.');
     if (data.notify) {
-      newUserGuide.completed = false;
-      newUserGuide.save();
+      newUserGuide.forEach((userGuide) => {
+        userGuide.completed = false;
+        userGuide.save();
+      });
     }
     const result = await this.guideModel.findByIdAndUpdate(id, data, {
       new: true,

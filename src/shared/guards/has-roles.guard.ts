@@ -1,11 +1,11 @@
-import { Reflector } from '@nestjs/core';
-import { Request } from 'express';
 import {
   CanActivate,
   ExecutionContext,
   ForbiddenException,
   Injectable,
 } from '@nestjs/common';
+import { Reflector } from '@nestjs/core';
+import { Request } from 'express';
 import { REQUERED_ROLES } from 'src/modules/auth/set-roles.decorator';
 
 @Injectable()

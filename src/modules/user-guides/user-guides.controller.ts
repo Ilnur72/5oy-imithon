@@ -5,7 +5,7 @@ import {
   Param,
   Post,
   Query,
-  UseGuards
+  UseGuards,
 } from '@nestjs/common';
 import { HasRole } from 'src/shared/guards/has-roles.guard';
 import { IsLoggedIn } from 'src/shared/guards/is-loggedin.guard';
@@ -21,6 +21,7 @@ import { UserGuidesService } from './user-guides.service';
 export class UserGuidesController {
   constructor(private readonly userGuidesService: UserGuidesService) {}
 
+  @SetRoles(UserRole.ADMIN, UserRole.EMPLOYEE)
   @Post(':id/read')
   createRead(@Param('id') id: string) {
     return this.userGuidesService.createRead(id);
@@ -31,7 +32,7 @@ export class UserGuidesController {
     return this.userGuidesService.createBulk(data);
   }
 
-  @SetRoles(UserRole.ADMIN ,UserRole.EMPLOYEE)
+  @SetRoles(UserRole.ADMIN, UserRole.EMPLOYEE)
   @Get()
   findAll(@Query() findUserGuideDtop: FindUserGuideDto) {
     return this.userGuidesService.findAll(findUserGuideDtop);
