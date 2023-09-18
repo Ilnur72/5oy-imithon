@@ -25,6 +25,9 @@
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+
+## About the project
+
 Har qanday kompaniya bo’lsin, unda turli xil ichki qoidalar mavjud. Bu qoidalarga ishchilar amal qilishlari shart. Bazi qoidalar faqat, ma’lum bir guruhga kiruvchi ishchilar uchun mo’ljallangan bo’lishi mumkin.Muammo shundagi, bunday tartib qoidalarga qanchalar amal qilinayapti yoki qilinmayapti, buni nazorat qilish oson emas. Bundan tashqari, hamma qonun-qoidalarni markazlashgan xolda saqlash va agarda biror qoida o’zgarsa boshqalarni bu haqda ogohlantirish oson emas. Yoki bu qonun qoidalarga amal qilmayotganlarni qonun-qoidalar bilan qayta tanishtrish, bunga ketadigan vaqt. Bu loyiha mana shu muammoga yechim sifatida qilingan. Agarda loyiha qonun-qoidaga amal qilinishini nazorat qiladi deb o’ylasangiz xato o’ylayapsiz. Loyiha kompaniyadagi qonun-qoidalarni bir joyda jamlovchi va qaysidir hodim ular bilan tanishib chiqishi lozim bo’lsa, ularga yordam beruvchi platformadir.
 
 ## Installation
